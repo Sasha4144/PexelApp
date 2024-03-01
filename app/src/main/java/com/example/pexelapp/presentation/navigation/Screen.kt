@@ -18,4 +18,5 @@ sealed class Screen(val route: String,
         R.drawable.bookmark_button_active,
         R.drawable.bookmark_button_inactive
     )
+    object Details : Screen(route = "details/{id}", "details")
 }

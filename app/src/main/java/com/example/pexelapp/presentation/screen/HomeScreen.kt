@@ -1,7 +1,6 @@
 package com.example.pexelapp.presentation.screen
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -20,7 +19,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.SearchBar
@@ -99,13 +97,17 @@ fun HomeScreen(
             }
         )
 
-        PhotosBlock(photos = photos)
+        PhotosBlock(photos = photos,
+            onPhotoClicked = {
+                navController.navigate("details/$it")
+            })
     }
 }
 
 @Composable
 fun PhotosBlock(
-    photos: List<PhotoDomain>
+    photos: List<PhotoDomain>,
+    onPhotoClicked: (String) -> Unit
 ) {
     LazyVerticalStaggeredGrid(
         modifier = Modifier
@@ -115,20 +117,29 @@ fun PhotosBlock(
         columns = StaggeredGridCells.Fixed(2),
     ) {
         items(photos) {
-            PhotoItem(url = it.src.medium)
+            PhotoItem(
+                url = it.src.medium,
+                onClick = onPhotoClicked,
+                id = it.id
+            )
         }
     }
 }
 
 @Composable
 fun PhotoItem(
-    url: String
+    url: String,
+    onClick: (String) -> Unit = {},
+    id: Int
 ) {
     AsyncImage(
         modifier = Modifier
             .padding(8.dp)
             .fillMaxSize()
-            .clip(RoundedCornerShape(24.dp)),
+            .clip(RoundedCornerShape(24.dp))
+            .clickable {
+                onClick(id.toString())
+            },
         model = url,
         contentDescription = "Image",
         contentScale = ContentScale.FillWidth
