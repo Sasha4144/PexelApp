@@ -9,9 +9,13 @@ sealed class Screen(val route: String,
 ) {
     object Splash : Screen("splash_screen", "splash")
     object Home : Screen("home_screen",
-        "home"
+        "home",
+        R.drawable.home_button_active,
+        R.drawable.home_button_inactive
     )
     object Bookmark : Screen("bookmark_screen",
-        "bookmark"
+        "bookmark",
+        R.drawable.bookmark_button_active,
+        R.drawable.bookmark_button_inactive
     )
 }
