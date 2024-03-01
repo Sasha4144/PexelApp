@@ -18,7 +18,7 @@ fun SetupNavGraph(navController: NavHostController) {
             AnimatedSplashScreen(navController = navController)
         }
         composable(route = Screen.Home.route) {
-            HomeScreen()
+            HomeScreen(navController = navController)
         }
         composable(route = Screen.Bookmark.route) {
             BookmarkScreen()
