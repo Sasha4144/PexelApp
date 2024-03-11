@@ -8,14 +8,17 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.pexelapp.R
 import com.example.pexelapp.presentation.screen.SplashScreen.Splash
 import com.example.pexelapp.ui.theme.LightGray
 import com.example.pexelapp.ui.theme.Red
@@ -39,12 +42,12 @@ fun CustomSearchBar(
         active = active,
         onActiveChange = onActiveChanged,
         placeholder = {
-            Text(text = "Search")
+            Text(text = stringResource(id = R.string.search))
         },
         leadingIcon = {
             Icon(
                 imageVector = Icons.Default.Search,
-                tint = Red,
+                tint = MaterialTheme.colorScheme.tertiary,
                 contentDescription = "Search icon"
             )
         },
@@ -65,9 +68,9 @@ fun CustomSearchBar(
 
         },
         colors = SearchBarDefaults.colors(
-            containerColor = LightGray,
+            containerColor = MaterialTheme.colorScheme.primary,
             inputFieldColors = TextFieldDefaults.colors(
-                cursorColor = Red
+                cursorColor = MaterialTheme.colorScheme.tertiary
             )
         )
     ) {

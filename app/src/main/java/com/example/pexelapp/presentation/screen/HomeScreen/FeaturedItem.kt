@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -23,8 +24,8 @@ fun FeaturedItem(
     selected: Boolean,
     onClick: (String) -> Unit
 ) {
-    val background = if (selected) Red else LightGray
-    val textColor = if (selected) White else Black
+    val background = if (selected) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.primary
+    val textColor = if (selected) MaterialTheme.colorScheme.background else MaterialTheme.colorScheme.onBackground
 
     Box(
         modifier = Modifier

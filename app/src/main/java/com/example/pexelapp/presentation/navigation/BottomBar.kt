@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -40,7 +41,7 @@ fun BottomBar(navController: NavHostController) {
     ) {
         screens.forEach { screen ->
             val selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true
-            val color = if (selected) Red else LightDarkGray
+            val color = if (selected) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.secondary
             Box(
                 modifier = Modifier.size(64.dp),
                 contentAlignment = Alignment.TopCenter

@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
+import com.example.pexelapp.R
 
 class DownloadCompletedReceiver : BroadcastReceiver() {
 
@@ -12,7 +13,7 @@ class DownloadCompletedReceiver : BroadcastReceiver() {
         if (intent?.action == "android.intent.action.DOWNLOAD_COMPLETE") {
             val id = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1L)
             if (id != -1L) {
-                Toast.makeText(context, "Download completed!", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, R.string.download_completed, Toast.LENGTH_LONG).show()
             }
         }
     }

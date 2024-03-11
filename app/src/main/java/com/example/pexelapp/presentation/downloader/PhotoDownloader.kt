@@ -4,7 +4,9 @@ import android.app.DownloadManager
 import android.content.Context
 import android.os.Environment
 import android.widget.Toast
+import androidx.compose.ui.res.stringResource
 import androidx.core.net.toUri
+import com.example.pexelapp.R
 
 class PhotoDownloader(
     private val context: Context
@@ -20,10 +22,10 @@ class PhotoDownloader(
             .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "$fileName.jpg")
 
         val res = try {
-            Toast.makeText(context, "Download started", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, R.string.download_started, Toast.LENGTH_SHORT).show()
             downloadManager.enqueue(request)
         } catch (e: Exception) {
-            Toast.makeText(context, "Download failed", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, R.string.download_failed, Toast.LENGTH_SHORT).show()
             -1
         }
         return res

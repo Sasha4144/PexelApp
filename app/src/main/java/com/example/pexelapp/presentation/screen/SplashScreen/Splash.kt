@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,7 +19,7 @@ import com.example.pexelapp.ui.theme.White
 fun Splash(alpha: Float) {
     Box(
         modifier = Modifier
-            .background(Red)
+            .background(MaterialTheme.colorScheme.tertiary)
             .fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
@@ -27,7 +28,7 @@ fun Splash(alpha: Float) {
                 .alpha(alpha = alpha),
             painter = painterResource(id = R.drawable.splash_logo),
             contentDescription = "Logo Icon",
-            tint = White
+            tint = MaterialTheme.colorScheme.background
         )
     }
 }

@@ -20,7 +20,6 @@ private val DarkColorScheme = darkColorScheme(
     primary = Gray,
     secondary = DarkGray,
     tertiary = Red,
-    onPrimary = White,
     onBackground = White
 )
 
@@ -29,7 +28,6 @@ private val LightColorScheme = lightColorScheme(
     primary = LightGray,
     secondary = LightDarkGray,
     tertiary = Red,
-    onPrimary = Black,
     onBackground = Black
 )
 
@@ -37,23 +35,15 @@ private val LightColorScheme = lightColorScheme(
 fun PexelAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
+    val colorScheme = if(darkTheme) DarkColorScheme else LightColorScheme
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
+            window.statusBarColor = colorScheme.background.toArgb()
+            window.navigationBarColor = colorScheme.background.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }
     }

@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,14 +20,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.pexelapp.R
-import com.example.pexelapp.ui.theme.LightDarkGray
-import com.example.pexelapp.ui.theme.LightGray
-import com.example.pexelapp.ui.theme.Red
-import com.example.pexelapp.ui.theme.White
 
 @Composable
 fun BottomBlock(
@@ -37,7 +35,7 @@ fun BottomBlock(
     Row(
         modifier = Modifier
             .padding(vertical = 24.dp)
-            .background(White)
+            .background(MaterialTheme.colorScheme.background)
             .fillMaxWidth()
             .height(48.dp),
         verticalAlignment = Alignment.CenterVertically,
@@ -50,7 +48,7 @@ fun BottomBlock(
             modifier = Modifier
                 .clip(RoundedCornerShape(24.dp))
                 .width((screenWidth - 48.dp) / 2)
-                .background(LightGray)
+                .background(MaterialTheme.colorScheme.primary)
                 .clickable { onDownloadClicked() },
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -59,18 +57,18 @@ fun BottomBlock(
                 modifier = Modifier
                     .size(48.dp)
                     .clip(RoundedCornerShape(24.dp))
-                    .background(Red),
+                    .background(MaterialTheme.colorScheme.tertiary),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.download),
                     contentDescription = "Download button",
-                    tint = White
+                    tint = MaterialTheme.colorScheme.background
                 )
             }
             Text(
                 modifier = Modifier.fillMaxWidth(),
-                text = "Download",
+                text = stringResource(id = R.string.download),
                 textAlign = TextAlign.Center
             )
         }
@@ -79,7 +77,7 @@ fun BottomBlock(
             modifier = Modifier
                 .size(48.dp)
                 .clip(RoundedCornerShape(24.dp))
-                .background(LightGray)
+                .background(MaterialTheme.colorScheme.primary)
                 .clickable { onFavoriteClicked() },
             contentAlignment = Alignment.Center
         ) {
@@ -87,7 +85,7 @@ fun BottomBlock(
             val painter =
                 if (isPhotoFavorite) R.drawable.bookmark_button_active else R.drawable.bookmark_button_inactive
             val contentColor =
-                if (isPhotoFavorite) Red else LightDarkGray
+                if (isPhotoFavorite) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.secondary
 
             Icon(
                 painter = painterResource(id = painter),

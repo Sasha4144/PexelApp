@@ -11,6 +11,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -33,7 +34,7 @@ fun CustomToolBar(
         modifier = Modifier
             .fillMaxWidth()
             .height(40.dp)
-            .background(White),
+            .background(MaterialTheme.colorScheme.background),
         verticalAlignment = Alignment.CenterVertically
     ) {
         if (hasNavigation) {
@@ -41,13 +42,13 @@ fun CustomToolBar(
                 modifier = Modifier
                     .clip(RoundedCornerShape(12.dp))
                     .size(40.dp)
-                    .background(LightGray)
+                    .background(MaterialTheme.colorScheme.primary)
             ) {
                 IconButton(onClick = onNavigationItemClicked) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,
                         contentDescription = "Back",
-                        tint = Black
+                        tint = MaterialTheme.colorScheme.onBackground
                     )
                 }
             }
@@ -57,7 +58,7 @@ fun CustomToolBar(
             text = title,
             textAlign = TextAlign.Center,
             fontSize = 18.sp,
-            color = Black,
+            color = MaterialTheme.colorScheme.onBackground,
         )
     }
 }

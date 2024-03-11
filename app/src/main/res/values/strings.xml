@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">PexelApp</string>
+    <string name="search">Search</string>
+    <string name="bookmarks">Bookmarks</string>
+    <string name="explore">Explore</string>
+    <string name="no_results">No results found</string>
+    <string name="no_bookmarks">You haven\'t saved anything yet</string>
+    <string name="image_not_found">Image not found</string>
+    <string name="download">Download</string>
+    <string name="download_completed">Download completed!</string>
+    <string name="download_started">Download started</string>
+    <string name="download_failed">Download failed</string>
 </resources>
