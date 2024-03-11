@@ -19,7 +19,7 @@ class DetailsViewModel @Inject constructor(
 ) : ViewModel() {
 
     val selectedPhoto = MutableStateFlow<PhotoDomain?>(null)
-    val isPhotoFavorite = MutableStateFlow<Boolean>(false)
+    val isPhotoFavorite = MutableStateFlow(false)
 
     fun getPhotoFromHomeScreen(id: Int?) {
         if (id != null) {
@@ -44,11 +44,11 @@ class DetailsViewModel @Inject constructor(
         val photo = photoDomain.asPhoto()
         viewModelScope.launch {
             if (isPhotoFavorite.value) {
-                removeFromFavourites(photo)
                 isPhotoFavorite.value = false
+                removeFromFavourites(photo)
             } else {
-                addToFavorites(photo)
                 isPhotoFavorite.value = true
+                addToFavorites(photo)
             }
             countPhotosById(photo.id)
         }
@@ -67,7 +67,7 @@ class DetailsViewModel @Inject constructor(
         }
     }
 
-    suspend fun countPhotosById(id: Int) {
+    private suspend fun countPhotosById(id: Int) {
         viewModelScope.launch {
             val count = databaseRepository.countPhotosById(id)
             isPhotoFavorite.value = count != 0
