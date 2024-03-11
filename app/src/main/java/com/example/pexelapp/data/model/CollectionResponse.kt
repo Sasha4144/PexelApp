@@ -1,4 +1,4 @@
-package com.example.pexelapp.data.models
+package com.example.pexelapp.data.model
 
 import com.example.pexelapp.domain.model.CollectionDomain
 

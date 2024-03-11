@@ -1,4 +1,4 @@
-package com.example.pexelapp.data.models
+package com.example.pexelapp.data.model
 
 data class Collection(
     val description: Any,

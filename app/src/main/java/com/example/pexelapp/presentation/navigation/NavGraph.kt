@@ -4,10 +4,10 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.pexelapp.presentation.screen.AnimatedSplashScreen
-import com.example.pexelapp.presentation.screen.BookmarkScreen
-import com.example.pexelapp.presentation.screen.DetailsScreen
-import com.example.pexelapp.presentation.screen.HomeScreen
+import com.example.pexelapp.presentation.screen.BookmarkScreen.BookmarkScreen
+import com.example.pexelapp.presentation.screen.DetailsScreen.DetailsScreen
+import com.example.pexelapp.presentation.screen.HomeScreen.HomeScreen
+import com.example.pexelapp.presentation.screen.SplashScreen.AnimatedSplashScreen
 
 @Composable
 fun SetupNavGraph(navController: NavHostController) {
@@ -22,7 +22,7 @@ fun SetupNavGraph(navController: NavHostController) {
             HomeScreen(navController = navController)
         }
         composable(route = Screen.Bookmark.route) {
-            BookmarkScreen()
+            BookmarkScreen(navController = navController)
         }
         composable(Screen.Details.route) { backStackEntry ->
             val arguments = requireNotNull(backStackEntry.arguments)

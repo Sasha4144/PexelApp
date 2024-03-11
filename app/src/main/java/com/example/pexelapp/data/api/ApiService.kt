@@ -1,8 +1,8 @@
 package com.example.pexelapp.data.api
 
-import com.example.pexelapp.data.models.CollectionsResponse
-import com.example.pexelapp.data.models.Photo
-import com.example.pexelapp.data.models.PhotoResponse
+import com.example.pexelapp.data.model.CollectionsResponse
+import com.example.pexelapp.data.model.Photo
+import com.example.pexelapp.data.model.PhotoResponse
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Path

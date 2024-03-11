@@ -3,11 +3,12 @@ package com.example.pexelapp.domain.repository
 import com.example.pexelapp.domain.model.CollectionDomain
 import com.example.pexelapp.domain.model.PhotoDomain
 
-interface PhotoRepository {
+interface WebRepository {
     suspend fun getFeaturedCollectionList(
         page: Int,
         per_page: Int
     ): List<CollectionDomain>
+
     suspend fun getPhotosList(
         query: String,
         per_page: Int,

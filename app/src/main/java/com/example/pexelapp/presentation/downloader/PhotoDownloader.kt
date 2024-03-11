@@ -19,14 +19,13 @@ class PhotoDownloader(
             .setTitle("$fileName.jpg")
             .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "$fileName.jpg")
 
-        val a = try {
+        val res = try {
             Toast.makeText(context, "Download started", Toast.LENGTH_SHORT).show()
             downloadManager.enqueue(request)
         } catch (e: Exception) {
             Toast.makeText(context, "Download failed", Toast.LENGTH_SHORT).show()
             -1
         }
-
-        return a
+        return res
     }
 }

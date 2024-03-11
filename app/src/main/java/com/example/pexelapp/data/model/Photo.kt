@@ -1,10 +1,15 @@
-package com.example.pexelapp.data.models
+package com.example.pexelapp.data.model
 
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.example.pexelapp.domain.model.PhotoDomain
 import com.example.pexelapp.domain.model.SrcDomain
 import java.io.Serializable
 
+@Entity(tableName = "photos")
 data class Photo (
+    @PrimaryKey
     val id: Int,
     val alt: String,
     val avg_color: String,
@@ -13,6 +18,7 @@ data class Photo (
     val photographer: String,
     val photographer_id: Int,
     val photographer_url: String,
+    @Embedded()
     val src: Src,
     val url: String,
     val width: Int
